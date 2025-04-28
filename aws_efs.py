@@ -1,7 +1,7 @@
 from typing import Optional, Mapping, Sequence
 
 import pulumi_aws as aws
-from pulumi import Input, InputType, ResourceOptions
+from pulumi import Input, InputType, ResourceOptions, AccessPointPosixUserArgs, AccessPointRootDirectoryArgs
 
 
 class EFS:
