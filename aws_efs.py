@@ -43,6 +43,7 @@ class EFS:
                                    ip_address=ip_address,
                                    security_groups=security_groups,
                                    subnet_id=subnet_id,
+                                   tags=tags,
                                    opts=ResourceOptions(depends_on=depends_on))
     
 
@@ -59,5 +60,6 @@ class EFS:
                                    file_system_id=file_system_id,
                                    posix_user=posix_user,
                                    root_directory=root_directory,
+                                   tags=tags,
                                    opts=ResourceOptions(depends_on=depends_on))
 
