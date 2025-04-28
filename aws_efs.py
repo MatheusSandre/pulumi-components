@@ -44,3 +44,20 @@ class EFS:
                                    security_groups=security_groups,
                                    subnet_id=subnet_id,
                                    opts=ResourceOptions(depends_on=depends_on))
+    
+
+    @staticmethod
+    def create_accesspoint(name,
+                           file_system_id: Optional[str] = None,
+                           posix_user: Optional[AccessPointPosixUserArgs] = None,
+                           root_directory: Optional[AccessPointRootDirectoryArgs] = None,
+                           tags: Optional[Mapping[str, str]] = None,
+                           depends_on: Optional[Sequence[object]] = None):
+        resource_name = "efsaccesspoint-" + name
+
+        return aws.efs.AccessPoint(resource_name,
+                                   file_system_id=file_system_id,
+                                   posix_user=posix_user,
+                                   root_directory=root_directory,
+                                   opts=ResourceOptions(depends_on=depends_on))
+
