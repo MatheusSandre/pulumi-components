@@ -45,13 +45,12 @@ class EFS:
                                    subnet_id=subnet_id,
                                    tags=tags,
                                    opts=ResourceOptions(depends_on=depends_on))
-    
 
     @staticmethod
     def create_accesspoint(name,
                            file_system_id: Optional[str] = None,
-                           posix_user: Optional[AccessPointPosixUserArgs] = None,
-                           root_directory: Optional[AccessPointRootDirectoryArgs] = None,
+                           posix_user: Optional[Sequence[object]] = None,
+                           root_directory: Optional[Sequence[object]] = None,
                            tags: Optional[Mapping[str, str]] = None,
                            depends_on: Optional[Sequence[object]] = None):
         resource_name = "efsaccesspoint-" + name
@@ -62,4 +61,3 @@ class EFS:
                                    root_directory=root_directory,
                                    tags=tags,
                                    opts=ResourceOptions(depends_on=depends_on))
-
