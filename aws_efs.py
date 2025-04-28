@@ -43,6 +43,7 @@ class EFS:
                                    ip_address=ip_address,
                                    security_groups=security_groups,
                                    subnet_id=subnet_id,
+                                   tags=tags,
                                    opts=ResourceOptions(depends_on=depends_on))
 
     @staticmethod
