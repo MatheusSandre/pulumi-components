@@ -1,7 +1,7 @@
 from typing import Optional, Mapping, Sequence
 
 import pulumi_aws as aws
-from pulumi import Input, InputType, ResourceOptions, AccessPointPosixUserArgs, AccessPointRootDirectoryArgs
+from pulumi import Input, InputType, ResourceOptions
 
 
 class EFS:
@@ -48,8 +48,8 @@ class EFS:
     @staticmethod
     def create_accesspoint(name,
                            file_system_id: Optional[str] = None,
-                           posix_user: Optional[AccessPointPosixUserArgs] = None,
-                           root_directory: Optional[AccessPointRootDirectoryArgs] = None,
+                           posix_user: Optional[Sequence[object]] = None,
+                           root_directory: Optional[Sequence[object]] = None,
                            tags: Optional[Mapping[str, str]] = None,
                            depends_on: Optional[Sequence[object]] = None):
         resource_name = "efsaccesspoint-" + name
