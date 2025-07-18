@@ -17,5 +17,5 @@ class DNS:
         resource_name = "cloudflare-record-" + name
 
         return cloudflare.Record(resource_name, name=name, proxied=proxied,
-                                 ttl=ttl, type=record_type, value=value, zone_id=zone_id,
+                                 ttl=ttl, type=record_type, content=value, zone_id=zone_id,
                                  opts=ResourceOptions(depends_on=depends_on))
