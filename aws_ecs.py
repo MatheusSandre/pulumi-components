@@ -9,8 +9,8 @@ class ECS:
     @staticmethod
     def create_cluster(name,
                        container_insights_enabled: Optional[bool] = False,
-                       configuration: Optional[ClusterConfigurationArgs] = None,
-                       service_connect_defaults: Optional[ClusterServiceConnectDefaultsArgs] = None,
+                       configuration: Optional[InputType['ClusterConfigurationArgs']] = None,
+                       service_connect_defaults: Optional[InputType['ClusterServiceConnectDefaultsArgs']] = None,
                        tags: Optional[Mapping[str, str]] = None,
                        depends_on: Optional[Sequence[object]] = None):
         resource_name = "ecscluster-" + name
