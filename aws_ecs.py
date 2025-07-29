@@ -9,10 +9,9 @@ class ECS:
     @staticmethod
     def create_cluster(name,
                        container_insights_enabled: Optional[bool] = False,
-                       capacity_providers: Optional[Sequence[str]] = None,
+                       configuration: Optional[ClusterConfigurationArgs] = None,
+                       service_connect_defaults: Optional[ClusterServiceConnectDefaultsArgs] = None,
                        tags: Optional[Mapping[str, str]] = None,
-                       default_capacity_provider_strategies: Optional[
-                           Sequence[Input[InputType['ClusterDefaultCapacityProviderStrategyArgs']]]] = None,
                        depends_on: Optional[Sequence[object]] = None):
         resource_name = "ecscluster-" + name
 
@@ -21,8 +20,8 @@ class ECS:
         else:
             settings = None
 
-        return aws.ecs.Cluster(resource_name, name=name, settings=settings, capacity_providers=capacity_providers,
-                               tags=tags, default_capacity_provider_strategies=default_capacity_provider_strategies,
+        return aws.ecs.Cluster(resource_name, name=name, settings=settings, configuration=configuration,
+                               tags=tags, service_connect_defaults=service_connect_defaults,
                                opts=ResourceOptions(depends_on=depends_on))
 
     @staticmethod
