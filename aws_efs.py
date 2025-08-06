@@ -45,7 +45,7 @@ class EFS:
                                    subnet_id=subnet_id,
                                    region=region,
                                    opts=ResourceOptions(depends_on=depends_on))
-region
+
     @staticmethod
     def create_accesspoint(name,
                            file_system_id: Optional[str] = None,
