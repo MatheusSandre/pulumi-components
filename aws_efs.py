@@ -34,7 +34,7 @@ class EFS:
                            ip_address: Optional[str] = None,
                            security_groups: Optional[Sequence[str]] = None,
                            subnet_id: Optional[str] = None,
-                           tags: Optional[Mapping[str, str]] = None,
+                           region: Optional[str] = None,
                            depends_on: Optional[Sequence[object]] = None):
         resource_name = "efsmounttarget-" + name
 
@@ -43,9 +43,9 @@ class EFS:
                                    ip_address=ip_address,
                                    security_groups=security_groups,
                                    subnet_id=subnet_id,
-                                   tags=tags,
+                                   region=region,
                                    opts=ResourceOptions(depends_on=depends_on))
-
+region
     @staticmethod
     def create_accesspoint(name,
                            file_system_id: Optional[str] = None,
