@@ -26,6 +26,7 @@ class RDS:
                        deletion_protection: Optional[bool] = False,
                        enabled_cloudwatch_logs_exports: Optional[Sequence[str]] = None,
                        skip_final_snapshot: Optional[bool] = False,
+                       allow_major_version_upgrade: Optional[bool] = True,
                        tags: Optional[Mapping[str, str]] = None,
                        depends_on: Optional[Sequence[object]] = None):
         resource_name = "rdscluster" + name
@@ -40,6 +41,7 @@ class RDS:
                                engine=engine, engine_mode=engine_mode, engine_version=engine_version,
                                master_password=password, master_username=username, port=port,
                                skip_final_snapshot=skip_final_snapshot, tags=tags,
+                               allow_major_version_upgrade=allow_major_version_upgrade,
                                vpc_security_group_ids=vpc_security_group_ids,
                                opts=ResourceOptions(ignore_changes=["master_username", "master_password"],
                                                     depends_on=depends_on))
