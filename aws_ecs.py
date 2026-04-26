@@ -40,6 +40,7 @@ class ECS:
                        tags: Optional[Mapping[str, str]] = None,
                        enable_execute_command: Optional[bool] = None,
                        deployment_circuit_breaker: Optional[Input[InputType['ServiceDeploymentCircuitBreakerArgs']]] = None,
+                       force_new_deployment: Optional[bool] = None,
                        depends_on: Optional[Sequence[object]] = None):
         resource_name = "ecsservice-" + name
 
@@ -52,9 +53,10 @@ class ECS:
                                service_registries=service_registries, tags=tags,
                                enable_execute_command=enable_execute_command,
                                deployment_circuit_breaker=deployment_circuit_breaker,
+                               force_new_deployment=force_new_deployment,
                                opts=ResourceOptions(
                                    ignore_changes=[
-                                       "task_definition", "desired_count", "capacity_provider_strategies"],
+                                       "task_definition", "desired_count"],
                                    depends_on=depends_on))
 
     @staticmethod

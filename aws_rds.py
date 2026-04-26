@@ -73,6 +73,7 @@ class RDS:
                         multi_az: Optional[bool] = False,
                         backup_retention_period: Optional[int] = None,
                         enabled_cloudwatch_logs_exports: Optional[Sequence[str]] = None,
+                        deletion_protection: Optional[bool] = False,
                         tags: Optional[Mapping[str, str]] = None,
                         depends_on: Optional[Sequence[object]] = None):
         resource_name = "rdsinstance-" + db_name
@@ -91,6 +92,7 @@ class RDS:
                                 username=username, vpc_security_group_ids=vpc_security_group_ids,
                                 allocated_storage=allocated_storage, monitoring_role_arn=monitoring_role_arn,
                                 iam_database_authentication_enabled=iam_database_authentication_enabled,
+                                deletion_protection=deletion_protection,
                                 opts=ResourceOptions(ignore_changes=["username", "password"],
                                                      depends_on=depends_on))
 

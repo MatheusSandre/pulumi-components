@@ -60,5 +60,33 @@ class Cloudfront:
                                                    opts=ResourceOptions(depends_on=depends_on))
 
     @staticmethod
+    def create_origin_access_control(name,
+                                     description: Optional[str] = None,
+                                     origin_access_control_origin_type: str = "s3",
+                                     signing_behavior: str = "always",
+                                     signing_protocol: str = "sigv4",
+                                     depends_on: Optional[Sequence[object]] = None):
+        resource_name = "cloudfrontoriginaccesscontrol-" + name
+
+        return aws.cloudfront.OriginAccessControl(resource_name, name=name,
+                                                  description=description,
+                                                  origin_access_control_origin_type=origin_access_control_origin_type,
+                                                  signing_behavior=signing_behavior,
+                                                  signing_protocol=signing_protocol,
+                                                  opts=ResourceOptions(depends_on=depends_on))
+
+    @staticmethod
+    def create_function(name, code,
+                        runtime: str = "cloudfront-js-2.0",
+                        comment: Optional[str] = None,
+                        publish: bool = True,
+                        depends_on: Optional[Sequence[object]] = None):
+        resource_name = "cloudfrontfunction-" + name
+
+        return aws.cloudfront.Function(resource_name, name=name, code=code,
+                                       runtime=runtime, comment=comment, publish=publish,
+                                       opts=ResourceOptions(depends_on=depends_on))
+
+    @staticmethod
     def get_distribution(distribution_id):
         return aws.cloudfront.get_distribution(id=distribution_id)
